@@ -2,7 +2,7 @@
 
 Nesta aula vamos realizar a comunicação entre o computador com o Arduino pela porta USB (comunicação serial UART).
 
-# Objetivo da aula:
+## Objetivo da aula:
 
 Usar Python para enviar comandos ao Arduino
 Ligar e desligar um LED pela porta serial
@@ -19,13 +19,13 @@ O computador passa a controlar o hardware fisicamente.
 Abra o arquivo aula_0.ino na Arduino IDE.
 Conecte o Arduino ao computador via cabo USB.
 
-# Selecione:
+## Selecione:
 A placa correta
 A porta correta (exemplo: COM3)
 
 Clique em Upload para gravar o código.
 
-# ⚠️ Anote a porta COM utilizada. Você precisará dela no Python.
+## ⚠️ Anote a porta COM utilizada. Você precisará dela no Python.
 
 ## 🐍 Parte 2 – Preparando o Ambiente Python (Windows)
 
@@ -52,7 +52,7 @@ python -m venv venv
 pip install pyserial
 ```
 
-# ▶ Execução
+## ▶ Execução
 
 1️⃣ Verifique se a porta no arquivo aula_0.py corresponde à porta do Arduino (ex: COM3).
 
