@@ -5,7 +5,9 @@ Nesta aula vamos realizar a comunicação entre o computador com o Arduino pela 
 ## Objetivo da aula:
 
 Usar Python para enviar comandos ao Arduino
+
 Ligar e desligar um LED pela porta serial
+
 O computador passa a controlar o hardware fisicamente.
 
 ## 🛠️ Materiais Necessários
@@ -17,10 +19,12 @@ O computador passa a controlar o hardware fisicamente.
 ##💻 Parte 1 – Preparando o Arduino
 
 Abra o arquivo aula_0.ino na Arduino IDE.
+
 Conecte o Arduino ao computador via cabo USB.
 
 ## Selecione:
 A placa correta
+
 A porta correta (exemplo: COM3)
 
 Clique em Upload para gravar o código.
