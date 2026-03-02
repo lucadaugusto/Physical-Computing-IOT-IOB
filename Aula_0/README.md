@@ -16,7 +16,7 @@ O computador passa a controlar o hardware fisicamente.
 
 1x Cabo USB.
 
-##💻 Parte 1 – Preparando o Arduino
+## 💻 Parte 1 – Preparando o Arduino
 
 Abra o arquivo aula_0.ino na Arduino IDE.
 
