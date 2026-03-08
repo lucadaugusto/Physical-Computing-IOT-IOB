@@ -19,8 +19,8 @@ pip install opencv-python mediapipe pyserial
 * Feedback visual no vídeo com linha guia entre o polegar e o indicador.
 
 ## 📂 Estrutura do Projeto
-* `Aula_Pinca.py`: Script Python (processamento da imagem e cálculo).
-* `Aula_Pinca.ino`: Código Arduino (recepção do dado e controle do LED).
+* `Aula_2.py`: Script Python (processamento da imagem e cálculo).
+* `Aula_2.ino`: Código Arduino (recepção do dado e controle do LED).
 * `hand_landmarker.task`: Arquivo de inteligência artificial (essencial na mesma pasta).
 
 ## 🔌 Como Configurar
@@ -30,8 +30,8 @@ Conecte o LED a um pino **PWM** (marcado com `~`):
 * **LED (Pólo Positivo):** Conectar ao pino digital escolhido **.
 
 ### 2. Software
-1. Carregue o arquivo `Aula_Pinca.ino` no seu Arduino.
-2. No PyCharm, abra o arquivo `Aula_Pinca.py`.
+1. Carregue o arquivo `Aula_2.ino` no seu Arduino.
+2. No PyCharm, abra o arquivo `Aula_2.py`.
 3. **Configuração da Porta Serial:**
     * **Com Arduino:** Altere `PORTA_ARDUINO` para a sua porta (ex: `'COM3'`).
     * **Sem Arduino (Teste):** Defina `PORTA_ARDUINO = None`.
