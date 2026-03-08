@@ -34,15 +34,14 @@ pip install opencv-python mediapipe pyserial
 1. Hardware
 
 Ligue os LEDs aos pinos digitais do Arduino conforme a tabela:
-*Dedo 1: Pino 6
-*Dedo 2: Pino 7
+* Dedo 1: Pino 6.
+* Dedo 2: Pino 7.
 
 2. Software
-*Carregue o arquivo Aula_1.ino no seu Arduino usando a IDE do Arduino.
-*No PyCharm, abra o Aula_1.py.
-  Nota importante sobre a conexão:
-*Com Arduino: No arquivo Aula_1.py, altere a variável PORTA_ARDUINO para a porta onde sua placa está conectada (ex: 'COM3' ou 'COM9').
-*Sem Arduino (Teste): Caso queira testar apenas a detecção da câmera, defina PORTA_ARDUINO = None.
+* Carregue o arquivo Aula_1.ino no seu Arduino usando a IDE do Arduino.
+* No PyCharm, abra o Aula_1.py.
+* Com Arduino: No arquivo Aula_1.py, altere a variável PORTA_ARDUINO para a porta onde sua placa está conectada (ex: 'COM3' ou 'COM9').
+* Sem Arduino (Teste): Caso queira testar apenas a detecção da câmera, defina PORTA_ARDUINO = None.
 
     Execute o script Python.
 
