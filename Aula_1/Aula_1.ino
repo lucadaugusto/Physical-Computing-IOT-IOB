@@ -1,68 +1,78 @@
+/* * ==============================================================================
+ * PROJETO: RECEPTOR DE GESTOS (Arduino + JSON)
+ * ==============================================================================
+ * HARDWARE: 
+ * - LED 1: Pino Digital 6
+ * - LED 2: Pino Digital 7 (e assim por diante)
+ * * BIBLIOTECA: Instalar a "ArduinoJson" no Library Manager.
+ * ==============================================================================
+ */
+
+// Inclui a biblioteca para ler o formato JSON
 #include <ArduinoJson.h>
 
-const int pin1 = 6; // Saída acionada quando valor == 1
-const int pin2 = 7; // Saída acionada quando valor == 2
-
-int ultimoValor = -1; // Para evitar reescritas desnecessárias
-
+// ==============================================================================
+// 1. Configuração dos Pinos
+// ==============================================================================
+// Vamos ligar os LEDs aos pinos digitais 6 e 7 do Arduino
+const int pinoLED1 = 6; 
+const int pinoLED2 = 7; 
 
 void setup() {
-
-  Serial.begin(9600);   // Comunicação serial
-  Serial.setTimeout(100); // Timeout de 100 ms para leitura da serial
-
-  pinMode(pin1, OUTPUT);
-  pinMode(pin2, OUTPUT);
-
-  digitalWrite(pin1, LOW);
-  digitalWrite(pin2, LOW);
-
-  Serial.println("Arduino pronto para receber comandos JSON...");
+  // Inicia a comunicação serial com a mesma velocidade do Python (9600)
+  Serial.begin(9600);
+  
+  // Configura os pinos dos LEDs como SAÍDA de energia
+  pinMode(pinoLED1, OUTPUT);
+  pinMode(pinoLED2, OUTPUT);
+  
+  // Garante que os LEDs começam apagados
+  digitalWrite(pinoLED1, LOW);
+  digitalWrite(pinoLED2, LOW);
 }
 
 void loop() {
+  // ==============================================================================
+  // 2. Leitura da Comunicação Serial
+  // ==============================================================================
+  // Verifica se existe alguma mensagem na "caixa de correio" (Serial)
   if (Serial.available() > 0) {
-    String jsonString = Serial.readStringUntil('\n');
-    jsonString.trim();
-
-    if (jsonString.length() > 0) {
-      StaticJsonDocument<200> doc;
-      DeserializationError error = deserializeJson(doc, jsonString);
-
-      if (error) {
-        Serial.print("Erro JSON: ");
-        Serial.println(error.f_str());
-        return;
+    
+    // Lê a mensagem toda até encontrar a quebra de linha ('\n')
+    String pacoteTexto = Serial.readStringUntil('\n');
+    
+    // ==============================================================================
+    // 3. Processamento do JSON
+    // ==============================================================================
+    // Cria um documento JSON (usando a sintaxe do ArduinoJson 7)
+    JsonDocument doc;
+    
+    // Tenta converter o texto recebido para o formato JSON
+    DeserializationError erro = deserializeJson(doc, pacoteTexto);
+    
+    // Se não houver erro na leitura do JSON, prosseguimos
+    if (!erro) {
+      // Extrai o número que está dentro da chave "valor"
+      int quantidadeDedos = doc["valor"];
+      
+      // ==============================================================================
+      // 4. Lógica de Acender/Apagar LEDs
+      // ==============================================================================
+      // Primeiro, apagamos todos os LEDs para garantir um estado limpo
+      digitalWrite(pinoLED1, LOW);
+      digitalWrite(pinoLED2, LOW);
+      
+      // Acende os LEDs com base na quantidade de dedos
+      if (quantidadeDedos == 1) {
+        // Se for 1 dedo, acende apenas o primeiro LED
+        digitalWrite(pinoLED1, HIGH);
+        
+      } else if (quantidadeDedos == 2) {
+        // Se forem 2 dedos, acende os dois LEDs
+        digitalWrite(pinoLED1, HIGH);
+        digitalWrite(pinoLED2, HIGH);
       }
-
-      // Lê o valor do JSON
-      if (!doc["valor"].isNull()) {
-        int valor = doc["valor"];
-
-        // Só atualiza se for diferente do último recebido
-        if (valor != ultimoValor) {
-          ultimoValor = valor;
-          Serial.print("Valor recebido: ");
-          Serial.println(valor);
-
-          if (valor == 1) {
-            digitalWrite(pin1, HIGH);
-            digitalWrite(pin2, LOW);
-            Serial.println("Pin1 ON | Pin2 OFF");
-          } 
-          else if (valor == 2) {
-            digitalWrite(pin1, LOW);
-            digitalWrite(pin2, HIGH);
-            Serial.println("Pin1 OFF | Pin2 ON");
-          } 
-          else {
-            digitalWrite(pin1, LOW);
-            digitalWrite(pin2, LOW);
-            Serial.println("Pin1 OFF | Pin2 OFF");
-          }
-        }
-      }
+      // Se for 0, os LEDs simplesmente continuam apagados
     }
   }
 }
-
