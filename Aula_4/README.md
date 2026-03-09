@@ -1,7 +1,6 @@
-# 😴 Detector de Sonolência (Segurança Viária)
-(IA + Arduino)
+# 😴 Detector de Sonolência (VC + IA + Arduino)
 
-Este projeto utiliza inteligência artificial para monitorar o nível de abertura dos olhos (**Eye Aspect Ratio - EAR**) em tempo real. Caso o sistema detecte que o usuário está com os olhos fechados por muito tempo, um alarme estilo "Hi-Lo" é disparado no Arduino.
+Este projeto utiliza visão computacional e IA para monitorar o nível de abertura dos olhos (**Eye Aspect Ratio - EAR**) em tempo real. Caso o sistema detecte que o usuário está com os olhos fechados por muito tempo, um alarme é disparado no Arduino.
 
 ## 🛠️ Pré-requisitos
 
@@ -15,7 +14,7 @@ pip install opencv-python mediapipe pyserial
 
 ## 🚀 Funcionalidades
 * **Cálculo de EAR:** Monitoramento da abertura ocular para detectar fadiga.
-* **Alarme Hi-Lo:** Alerta sonoro de dois tons (estilo Bombeiros) para despertar o condutor.
+* **Alarme:** Alerta sonoro de dois tons para despertar o condutor.
 * **Comunicação JSON:** Envio de status de segurança (`{"dir": "A"}` para Alarme e `{"dir": "N"}` para Normal).
 * **Interface Visual:** Destaque dos pontos dos olhos em azul na tela.
 
@@ -30,9 +29,6 @@ pip install opencv-python mediapipe pyserial
 Conecte os componentes de alerta nos pinos digitais:
 * **Buzzer (Positivo):** Pino Digital **9**.
 * **LED Alerta (Opcional):** Pino Digital **13** (ou LED interno da placa).
-* **GND:** Conectar os polos negativos ao Ground do Arduino.
-
-
 
 ### 2. Software
 1. **Arduino:** Carregue o arquivo `Aula_4.ino` através da Arduino IDE.
@@ -43,7 +39,7 @@ Conecte os componentes de alerta nos pinos digitais:
 
 ## 🎮 Como Operar
 * **Olhos Abertos:** O sistema exibe o valor do EAR em azul. O LED e Buzzer ficam desligados.
-* **Olhos Fechados:** Se permanecerem fechados por mais de **15 frames**, o Arduino inicia o toque **Hi-Lo** (Agudo/Grave) e exibe "ALERTA" na tela.
+* **Olhos Fechados:** Se permanecerem fechados por mais de **15 frames**, o Arduino inicia o toque e exibe "ALERTA" na tela.
 * **Tecla 'q'**: Encerra o programa com segurança.
 
 ---
