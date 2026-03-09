@@ -1,5 +1,5 @@
 # ==============================================================================
-# 🤏 PROJETO: CONTROLE DE INTENSIDADE POR PINÇA (MediaPipe + Arduino)
+# PROJETO: CONTROLE DE INTENSIDADE POR PINÇA (MediaPipe + Arduino)
 # ==============================================================================
 # Como usar:
 # 1. Altere a PORTA_ARDUINO ou deixe None para testes.
