@@ -31,7 +31,7 @@ base_options = python.BaseOptions(model_asset_path=model_path)
 options = vision.HandLandmarkerOptions(base_options=base_options, num_hands=1)
 detector = vision.HandLandmarker.create_from_options(options)
 
-# Variáveis de controlo
+# Variáveis de controle
 ultimo_valor_enviado = -1
 
 while cap := cv2.VideoCapture(0):
@@ -74,7 +74,7 @@ while cap := cv2.VideoCapture(0):
                     arduino.write(pacote.encode())
                     ultimo_valor_enviado = valor_atual
 
-        cv2.imshow("Controlo por Pinca", frame)
+        cv2.imshow("Controle por Pinca", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'): break
     break
 
