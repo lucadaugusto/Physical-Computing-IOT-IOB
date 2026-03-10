@@ -73,7 +73,7 @@ while cap.isOpened():
                 arduino.write(pacote.encode())
                 ultimo_valor_enviado = valor_atual
 
-    cv2.imshow("Controlo por Pinca", frame)
+    cv2.imshow("Controle por Pinca", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
